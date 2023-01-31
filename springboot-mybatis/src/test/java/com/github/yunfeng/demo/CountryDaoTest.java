@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @MybatisTest
+@DisplayName("springboot集成mybatis测试")
 class CountryDaoTest {
     @Autowired
     private CountryDao countryDao;
 
     @Test
+    @DisplayName("测试保存单个城市")
     void testSaveOneCountrySuccess() {
         int count = countryDao.save(Country.builder().id(6L).name("CHINA").build());
         Assertions.assertTrue(count > 0);
