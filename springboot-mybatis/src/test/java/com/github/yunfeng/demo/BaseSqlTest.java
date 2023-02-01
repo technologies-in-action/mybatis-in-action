@@ -29,7 +29,9 @@ public class BaseSqlTest {
         TransactionFactory transactionFactory = new JdbcTransactionFactory();
         Environment environment = new Environment("test", transactionFactory, dataSource);
         Configuration configuration = new Configuration(environment);
-        configuration.addMapper(CountryDao.class);
+        for (Class<?> mapper : BaseMappers.getMappers()) {
+            configuration.addMapper(mapper);
+        }
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
     }
 
