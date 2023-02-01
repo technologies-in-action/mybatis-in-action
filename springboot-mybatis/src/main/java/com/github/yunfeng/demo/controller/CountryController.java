@@ -1,4 +1,7 @@
-package com.github.yunfeng.demo;
+package com.github.yunfeng.demo.controller;
+
+import com.github.yunfeng.demo.entity.Country;
+import com.github.yunfeng.demo.service.CountryService;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

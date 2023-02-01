@@ -1,4 +1,4 @@
-package com.github.yunfeng.demo;
+package com.github.yunfeng.demo.entity;
 
 import lombok.Builder;
 import lombok.Getter;

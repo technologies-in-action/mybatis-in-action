@@ -1,4 +1,6 @@
-package com.github.yunfeng.demo;
+package com.github.yunfeng.demo.service;
+
+import com.github.yunfeng.demo.entity.Country;
 
 import java.util.List;
 

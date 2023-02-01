@@ -1,5 +1,7 @@
 package com.github.yunfeng.demo;
 
+import com.github.yunfeng.demo.dao.CountryDao;
+
 import java.util.List;
 
 public abstract class BaseMappers {

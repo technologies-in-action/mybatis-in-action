@@ -1,4 +1,6 @@
-package com.github.yunfeng.demo;
+package com.github.yunfeng.demo.dao;
+
+import com.github.yunfeng.demo.entity.Country;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

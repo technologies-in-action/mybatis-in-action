@@ -1,4 +1,6 @@
-package com.github.yunfeng.demo;
+package com.github.yunfeng.demo.dao;
+
+import com.github.yunfeng.demo.entity.Country;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

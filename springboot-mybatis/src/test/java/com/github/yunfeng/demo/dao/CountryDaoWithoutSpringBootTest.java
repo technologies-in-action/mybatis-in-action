@@ -1,4 +1,7 @@
-package com.github.yunfeng.demo;
+package com.github.yunfeng.demo.dao;
+
+import com.github.yunfeng.demo.BaseSqlTest;
+import com.github.yunfeng.demo.entity.Country;
 
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Assertions;

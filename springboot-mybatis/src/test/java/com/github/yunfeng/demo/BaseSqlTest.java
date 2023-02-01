@@ -21,7 +21,7 @@ import java.sql.Statement;
 
 public class BaseSqlTest {
     private static final String H2_URL = "jdbc:h2:mem:test";
-    static SqlSessionFactory sqlSessionFactory;
+    public static SqlSessionFactory sqlSessionFactory;
 
     @BeforeAll
     static void beforeAll() {
@@ -29,13 +29,11 @@ public class BaseSqlTest {
         TransactionFactory transactionFactory = new JdbcTransactionFactory();
         Environment environment = new Environment("test", transactionFactory, dataSource);
         Configuration configuration = new Configuration(environment);
-        for (Class<?> mapper : BaseMappers.getMappers()) {
-            configuration.addMapper(mapper);
-        }
+        BaseMappers.getMappers().forEach(configuration::addMapper);
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
     }
 
-    void executeSqlInFile(String filePath) {
+    public void executeSqlInFile(String filePath) {
         try {
             File file = ResourceUtils.getFile("classpath:sql/" + filePath);
             String sql = Files.readString(file.toPath());
