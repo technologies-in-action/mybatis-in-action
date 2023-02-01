@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Collections;
 import java.util.List;
 
 @MybatisTest
@@ -31,7 +32,8 @@ class CountryDaoTest {
     @Test
     @DisplayName("测试根据ID查询一个国家")
     void testFindCountiesByIdsSuccess() {
-        Country country = countryDao.findById(1L);
+        List<Country> countries = countryDao.findByIds(Collections.singletonList(1L));
+        Country country = countries.get(0);
         Assertions.assertEquals("USA", country.getName());
     }
 }

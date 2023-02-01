@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.List;
 
 @DisplayName("在不使用springboot的情况下，对Mapper做单元测试")
@@ -42,8 +43,9 @@ class CountryDaoWithoutSpringBootTest extends BaseSqlTest {
         executeSqlInFile("data-city.sql");
         try (SqlSession session = sqlSessionFactory.openSession()) {
             CountryDao countryDao = session.getMapper(CountryDao.class);
-            Country countries = countryDao.findById(1L);
-            Assertions.assertEquals("USA", countries.getName());
+            List<Country> countries = countryDao.findByIds(Collections.singletonList(1L));
+            Country country = countries.get(0);
+            Assertions.assertEquals("USA", country.getName());
         }
     }
 }
