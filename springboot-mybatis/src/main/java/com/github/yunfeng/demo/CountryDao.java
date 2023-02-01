@@ -13,4 +13,6 @@ public interface CountryDao {
 
     @Select("select id, name from countries")
     List<Country> findAll();
+
+    Country findById(Long id);
 }

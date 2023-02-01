@@ -15,16 +15,23 @@ class CountryDaoTest {
     private CountryDao countryDao;
 
     @Test
-    @DisplayName("测试保存单个城市")
+    @DisplayName("测试保存单个国家")
     void testSaveOneCountrySuccess() {
         int count = countryDao.save(Country.builder().id(6L).name("CHINA").build());
         Assertions.assertTrue(count > 0);
     }
 
     @Test
-    @DisplayName("测试查询所有城市")
+    @DisplayName("测试查询所有国家")
     void testFindAllCountiesSuccess() {
         List<Country> all = countryDao.findAll();
         Assertions.assertEquals(5, all.size());
+    }
+
+    @Test
+    @DisplayName("测试根据ID查询一个国家")
+    void testFindCountiesByIdsSuccess() {
+        Country country = countryDao.findById(1L);
+        Assertions.assertEquals("USA", country.getName());
     }
 }

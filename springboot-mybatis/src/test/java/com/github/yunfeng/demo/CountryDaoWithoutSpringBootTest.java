@@ -16,7 +16,7 @@ class CountryDaoWithoutSpringBootTest extends BaseSqlTest {
     }
 
     @Test
-    @DisplayName("测试保存单个城市")
+    @DisplayName("测试保存单个国家")
     void testSaveOneCountrySuccess() {
         try (SqlSession session = sqlSessionFactory.openSession()) {
             CountryDao countryDao = session.getMapper(CountryDao.class);
@@ -26,13 +26,24 @@ class CountryDaoWithoutSpringBootTest extends BaseSqlTest {
     }
 
     @Test
-    @DisplayName("测试查询所有城市")
+    @DisplayName("测试查询所有国家")
     void testFindAllCountiesSuccess() {
         executeSqlInFile("data-city.sql");
         try (SqlSession session = sqlSessionFactory.openSession()) {
             CountryDao countryDao = session.getMapper(CountryDao.class);
             List<Country> countries = countryDao.findAll();
             Assertions.assertEquals(5, countries.size());
+        }
+    }
+
+    @Test
+    @DisplayName("测试根据ID查询一个国家")
+    void testFindCountiesByIdSuccess() {
+        executeSqlInFile("data-city.sql");
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            CountryDao countryDao = session.getMapper(CountryDao.class);
+            Country countries = countryDao.findById(1L);
+            Assertions.assertEquals("USA", countries.getName());
         }
     }
 }
