@@ -1,6 +1,7 @@
 package com.github.yunfeng.demo;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
@@ -31,6 +32,8 @@ public class BaseSqlTest {
     private static final String H2_URL = "jdbc:h2:mem:test";
     private static final String DAO_SUFFIX = "Dao";
     private static final String DEFAULT_PACKAGE_NAME = "com.github.yunfeng.demo";
+    private static final String BASE_PACKAGE = System.getenv("BASE_PACKAGE");
+    private static final String basePackage = StringUtils.defaultIfBlank(BASE_PACKAGE, DEFAULT_PACKAGE_NAME);
     public static SqlSessionFactory sqlSessionFactory;
 
     @BeforeAll
@@ -61,7 +64,7 @@ public class BaseSqlTest {
     }
 
     private static Set<Class<?>> getMappers() {
-        Set<String> classes = ClazzUtils.getClazzName(DEFAULT_PACKAGE_NAME);
+        Set<String> classes = ClazzUtils.getClazzName(basePackage);
         return classes.stream().filter(clazz -> clazz.endsWith(DAO_SUFFIX)).map(BaseSqlTest::getClassByName)
                 .filter(BaseSqlTest::classHasMapperAnnotation).collect(Collectors.toSet());
     }
