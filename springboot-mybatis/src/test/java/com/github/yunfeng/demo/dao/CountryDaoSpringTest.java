@@ -13,7 +13,7 @@ import java.util.List;
 
 @MybatisTest
 @DisplayName("springboot集成mybatis测试")
-class CountryDaoTest {
+class CountryDaoSpringTest {
     @Autowired
     private CountryDao countryDao;
 

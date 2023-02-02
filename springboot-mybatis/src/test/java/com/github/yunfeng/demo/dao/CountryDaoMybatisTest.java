@@ -3,6 +3,7 @@ package com.github.yunfeng.demo.dao;
 import com.github.yunfeng.demo.BaseSqlTest;
 import com.github.yunfeng.demo.entity.Country;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +14,8 @@ import java.util.Collections;
 import java.util.List;
 
 @DisplayName("在不使用springboot的情况下，对Mapper做单元测试")
-class CountryDaoWithoutSpringBootTest extends BaseSqlTest {
+@Mapper
+class CountryDaoMybatisTest extends BaseSqlTest {
     @BeforeEach
     void beforeEach() {
         executeSqlInFile("schema-city.sql");
