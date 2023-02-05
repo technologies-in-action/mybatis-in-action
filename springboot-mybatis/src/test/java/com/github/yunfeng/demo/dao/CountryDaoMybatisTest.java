@@ -18,7 +18,7 @@ import java.util.List;
 class CountryDaoMybatisTest extends BaseSqlTest {
     @BeforeEach
     void beforeEach() {
-        executeSqlInFile("schema-city.sql");
+        executeSqlInFile("schema-country.sql");
     }
 
     @Test
@@ -34,7 +34,7 @@ class CountryDaoMybatisTest extends BaseSqlTest {
     @Test
     @DisplayName("测试查询所有国家")
     void testFindAllCountiesSuccess() {
-        executeSqlInFile("data-city.sql");
+        executeSqlInFile("data-country.sql");
         try (SqlSession session = sqlSessionFactory.openSession()) {
             CountryDao countryDao = session.getMapper(CountryDao.class);
             List<Country> countries = countryDao.findAll();
@@ -45,7 +45,7 @@ class CountryDaoMybatisTest extends BaseSqlTest {
     @Test
     @DisplayName("测试根据ID查询一个国家")
     void testFindCountiesByIdSuccess() {
-        executeSqlInFile("data-city.sql");
+        executeSqlInFile("data-country.sql");
         try (SqlSession session = sqlSessionFactory.openSession()) {
             CountryDao countryDao = session.getMapper(CountryDao.class);
             List<Country> countries = countryDao.findByIds(Collections.singletonList(1L));
